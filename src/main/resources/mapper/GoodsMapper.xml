@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lq.liequ.dao.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.lq.liequ.pojo.Goods" >
+    <id column="gid" property="gid" jdbcType="INTEGER" />
+    <result column="gname" property="gname" jdbcType="VARCHAR" />
+    <result column="gprice" property="gprice" jdbcType="DOUBLE" />
+    <result column="gimgurl" property="gimgurl" jdbcType="VARCHAR" />
+    <result column="gaddress" property="gaddress" jdbcType="VARCHAR" />
+    <result column="gcomment" property="gcomment" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    gid, gname, gprice, gimgurl, gaddress, gcomment
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where gid = #{gid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods
+    where gid = #{gid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lq.liequ.pojo.Goods" >
+    insert into goods (gid, gname, gprice, 
+      gimgurl, gaddress, gcomment
+      )
+    values (#{gid,jdbcType=INTEGER}, #{gname,jdbcType=VARCHAR}, #{gprice,jdbcType=DOUBLE}, 
+      #{gimgurl,jdbcType=VARCHAR}, #{gaddress,jdbcType=VARCHAR}, #{gcomment,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lq.liequ.pojo.Goods" >
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gid != null" >
+        gid,
+      </if>
+      <if test="gname != null" >
+        gname,
+      </if>
+      <if test="gprice != null" >
+        gprice,
+      </if>
+      <if test="gimgurl != null" >
+        gimgurl,
+      </if>
+      <if test="gaddress != null" >
+        gaddress,
+      </if>
+      <if test="gcomment != null" >
+        gcomment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gid != null" >
+        #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="gname != null" >
+        #{gname,jdbcType=VARCHAR},
+      </if>
+      <if test="gprice != null" >
+        #{gprice,jdbcType=DOUBLE},
+      </if>
+      <if test="gimgurl != null" >
+        #{gimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="gaddress != null" >
+        #{gaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="gcomment != null" >
+        #{gcomment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lq.liequ.pojo.Goods" >
+    update goods
+    <set >
+      <if test="gname != null" >
+        gname = #{gname,jdbcType=VARCHAR},
+      </if>
+      <if test="gprice != null" >
+        gprice = #{gprice,jdbcType=DOUBLE},
+      </if>
+      <if test="gimgurl != null" >
+        gimgurl = #{gimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="gaddress != null" >
+        gaddress = #{gaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="gcomment != null" >
+        gcomment = #{gcomment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where gid = #{gid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lq.liequ.pojo.Goods" >
+    update goods
+    set gname = #{gname,jdbcType=VARCHAR},
+      gprice = #{gprice,jdbcType=DOUBLE},
+      gimgurl = #{gimgurl,jdbcType=VARCHAR},
+      gaddress = #{gaddress,jdbcType=VARCHAR},
+      gcomment = #{gcomment,jdbcType=VARCHAR}
+    where gid = #{gid,jdbcType=INTEGER}
+  </update>
+</mapper>
