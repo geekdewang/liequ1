@@ -2,6 +2,8 @@ package com.lq.liequ.dao;
 
 import com.lq.liequ.pojo.User;
 
+import java.util.List;
+
 public interface UserMapper {
     int deleteByPrimaryKey(Integer uid);
 
@@ -14,4 +16,8 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User findByName(String uname);
+
+   // List<String> selectByUidPerms(Integer uid);
 }

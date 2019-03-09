@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.lq.liequ.do")
+@MapperScan("com.lq.liequ.dao")
 public class LiequApplication {
 
     public static void main(String[] args) {

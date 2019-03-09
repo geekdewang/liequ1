@@ -1,29 +1,37 @@
 package com.lq.liequ.realm;
 
 import com.lq.liequ.pojo.User;
+import com.lq.liequ.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 
 public class UserRealm extends AuthorizingRealm {
 
+   /* @Autowired
+    private UserService userService;*/
+
     //授权   查询登录用户的所有的权限，并返回
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        //1、获取登录用户
+       /* //1、获取登录用户
         User user= (User) SecurityUtils.getSubject().getSession().getAttribute("user");
         //2、查询对应的权限
-        List<String> perms=userService.queryPerms(user.getId());
+        List<String> perms=userService.queryPerms(user.getUid());
+
         SimpleAuthorizationInfo authorizationInfo=new SimpleAuthorizationInfo();
         //3、设置权限到指定对象中
         authorizationInfo.addStringPermissions(perms);
-        return authorizationInfo;
+
+        return authorizationInfo;*/
+       return null;
     }
     //认证  登录许可 标记是否登录成功
     @Override

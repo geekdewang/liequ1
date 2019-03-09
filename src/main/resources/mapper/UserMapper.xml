@@ -68,4 +68,10 @@
       upassword = #{upassword,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
+
+  <select id="findByName" parameterType="string" resultMap="BaseResultMap">
+    select * from user where uname=#{uname}
+  </select>
+
+
 </mapper>
