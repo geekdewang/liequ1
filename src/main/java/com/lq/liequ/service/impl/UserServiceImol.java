@@ -21,6 +21,12 @@ public class UserServiceImol implements UserService {
         return userDao.selectByUidPerms(uid);
     }*/
 
+    /**
+     * 登录
+     * @param name
+     * @param password
+     * @return
+     */
     @Override
     public ResultVo login(String name, String password) {
 
@@ -38,5 +44,20 @@ public class UserServiceImol implements UserService {
         }
 
         return ResultUtil.exec(true,"成功",userDao.findByName(name));
+    }
+
+    /**
+     * 注册
+     * @param user
+     * @return
+     */
+    @Override
+    public ResultVo regist(User user) {
+        try {
+            userDao.insertSelective(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResultUtil.exec(true,"OK",null);
     }
 }
