@@ -13,6 +13,8 @@ public class Goods {
 
     private String gcomment;
 
+    private  Integer mid;
+
     public Integer getGid() {
         return gid;
     }
@@ -59,5 +61,13 @@ public class Goods {
 
     public void setGcomment(String gcomment) {
         this.gcomment = gcomment == null ? null : gcomment.trim();
+    }
+
+    public Integer getMid() {
+        return mid;
+    }
+
+    public void setMid(Integer mid) {
+        this.mid = mid;
     }
 }
