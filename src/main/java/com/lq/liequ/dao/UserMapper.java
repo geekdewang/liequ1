@@ -9,6 +9,7 @@ public interface UserMapper {
 
     int insert(User record);
 
+    // 注册
     int insertSelective(User record);
 
     User selectByPrimaryKey(Integer uid);
@@ -17,6 +18,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
+    // 登录
     User findByName(String uname);
 
    // List<String> selectByUidPerms(Integer uid);

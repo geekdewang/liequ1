@@ -2,6 +2,8 @@ package com.lq.liequ.dao;
 
 import com.lq.liequ.pojo.Goods;
 
+import java.util.List;
+
 public interface GoodsMapper {
     int deleteByPrimaryKey(Integer gid);
 
@@ -14,4 +16,7 @@ public interface GoodsMapper {
     int updateByPrimaryKeySelective(Goods record);
 
     int updateByPrimaryKey(Goods record);
+
+    // 查询全部商品
+    List<Goods> slelectAll();
 }

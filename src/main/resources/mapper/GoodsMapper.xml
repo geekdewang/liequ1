@@ -103,4 +103,8 @@
       gcomment = #{gcomment,jdbcType=VARCHAR}
     where gid = #{gid,jdbcType=INTEGER}
   </update>
+
+  <select id="slelectAll" resultMap="BaseResultMap">
+    select * from goods
+  </select>
 </mapper>
