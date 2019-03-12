@@ -6,9 +6,10 @@
     <result column="mparentid" property="mparentid" jdbcType="INTEGER" />
     <result column="mname" property="mname" jdbcType="VARCHAR" />
     <result column="imgurl" property="imgurl" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    mid, mparentid, mname, imgurl
+    mid, mparentid, mname, imgurl, level
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

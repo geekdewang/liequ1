@@ -17,6 +17,7 @@ public class GoodsController {
 
     @RequestMapping("goodsAll")
     public ResultVo queryAll() {
+
         return ResultUtil.exec(true, "OK" , goodsService.queryAll());
     }
 }

@@ -9,6 +9,16 @@ public class Menu {
 
     private String imgurl;
 
+    private  Integer level;
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
     public Integer getMid() {
         return mid;
     }

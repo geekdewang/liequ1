@@ -13,7 +13,17 @@ public class MenuVo {
 
     private String imgurl;
 
+    private Integer level;
+
     private List<MenuVo> childenMenu;
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
 
     public Integer getMid() {
         return mid;
