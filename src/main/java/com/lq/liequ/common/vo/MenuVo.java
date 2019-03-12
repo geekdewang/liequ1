@@ -1,6 +1,5 @@
 package com.lq.liequ.common.vo;
 
-import com.lq.liequ.pojo.Menu;
 
 import java.util.List;
 

@@ -1,5 +1,7 @@
 package com.lq.liequ.service.impl;
 
+import com.lq.liequ.common.utils.ResultUtil;
+import com.lq.liequ.common.vo.ResultVo;
 import com.lq.liequ.dao.GoodsMapper;
 import com.lq.liequ.pojo.Goods;
 import com.lq.liequ.service.GoodsService;
@@ -16,8 +18,22 @@ public class GoodsServiceImpl implements GoodsService {
 
     // 查询全部
     @Override
-    public List<Goods> queryAll() {
+    public ResultVo queryAll() {
 
-        return goodsMapper.slelectAll();
+
+        ResultVo resultVo = new ResultVo();
+
+        try {
+            List<Goods> list = goodsMapper.slelectAll();
+            if (list != null) {
+                resultVo = ResultUtil.exec(true,"OK", list);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            resultVo = ResultUtil.exec(true, "ERROR", e.getMessage());
+        }
+
+
+        return resultVo;
     }
 }

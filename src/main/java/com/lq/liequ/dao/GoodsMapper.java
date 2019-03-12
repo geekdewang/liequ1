@@ -11,7 +11,7 @@ public interface GoodsMapper {
 
     int insertSelective(Goods record);
 
-    Goods selectByPrimaryKey(Integer gid);
+    Goods selectById(Integer gid);
 
     int updateByPrimaryKeySelective(Goods record);
 
