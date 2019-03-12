@@ -116,4 +116,8 @@
   <select id="slelectAll" resultMap="BaseResultMap">
     select * from goods
   </select>
+
+  <select id="slelectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from goods where gid = #{gid}
+  </select>
 </mapper>

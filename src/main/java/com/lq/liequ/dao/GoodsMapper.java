@@ -11,8 +11,8 @@ public interface GoodsMapper {
 
     int insertSelective(Goods record);
 
-    //根据gid展示商品详情
-    Goods selectById(Integer gid);
+    // 根据商品gid展示商品详情
+    Goods slelectById(Integer gid);
 
     int updateByPrimaryKeySelective(Goods record);
 

@@ -51,6 +51,22 @@ public class GoodsServiceImpl implements GoodsService {
 
         return resultVo;
     }
+    @Override
+    public ResultVo queryGoodsId(Integer gid) {
 
+        ResultVo resultVo = new ResultVo();
+
+        try {
+            Goods list = goodsMapper.slelectById(gid);
+            if (list != null)
+                resultVo = ResultUtil.exec(true, "OK", list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            resultVo = ResultUtil.exec(true, "ERROR", e.getMessage());
+        }
+
+        return resultVo;
+    }
 
 }
+

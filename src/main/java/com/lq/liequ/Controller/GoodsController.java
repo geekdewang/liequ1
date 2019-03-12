@@ -26,4 +26,10 @@ public class GoodsController {
 
         return goodsService.selectByMid(mid);
     }
+
+    @RequestMapping("goodsIdAll")
+    public ResultVo queryIdAll(Integer gid) {
+
+        return goodsService.queryGoodsId(gid);
+    }
 }

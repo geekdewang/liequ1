@@ -2,7 +2,6 @@ package com.lq.liequ.service;
 
 import com.lq.liequ.common.vo.ResultVo;
 import com.lq.liequ.pojo.Goods;
-import org.w3c.dom.ls.LSInput;
 
 import java.util.List;
 
@@ -12,4 +11,7 @@ public interface GoodsService {
     ResultVo queryAll();
     //根据mid查询商品列表
     ResultVo selectByMid(int mid);
+
+    // 根据商品id展示商品详情
+    ResultVo queryGoodsId(Integer gid);
 }
