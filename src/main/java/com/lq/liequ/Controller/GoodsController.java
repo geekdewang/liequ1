@@ -20,4 +20,10 @@ public class GoodsController {
 
         return goodsService.queryAll();
     }
+
+    @RequestMapping("goodsByMid")
+    public ResultVo queryByMid(int mid) {
+
+        return goodsService.selectByMid(mid);
+    }
 }

@@ -36,4 +36,21 @@ public class GoodsServiceImpl implements GoodsService {
 
         return resultVo;
     }
+
+    @Override
+    public ResultVo selectByMid(int mid) {
+        ResultVo resultVo = new ResultVo();
+
+        try {
+            List<Goods> list = goodsMapper.selectByMId(mid);
+            resultVo = ResultUtil.exec(true,"OK",list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            resultVo = ResultUtil.exec(false,"error",e.getMessage());
+        }
+
+        return resultVo;
+    }
+
+
 }
