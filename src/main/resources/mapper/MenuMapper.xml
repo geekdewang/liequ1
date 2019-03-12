@@ -79,4 +79,8 @@
       imgurl = #{imgurl,jdbcType=VARCHAR}
     where mid = #{mid,jdbcType=INTEGER}
   </update>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select * from menu
+  </select>
 </mapper>

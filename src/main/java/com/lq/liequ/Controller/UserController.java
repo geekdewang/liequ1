@@ -9,24 +9,27 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     //登录
-    @PostMapping("userlogin")
-    public ResultVo login(String name, String password){
-        ResultVo resultVo=userService.login(name,password);
+    @RequestMapping("userlogin")
+    public ResultVo login(String uname, String upassword){
+        ResultVo resultVo=userService.login(uname,upassword);
         UsernamePasswordToken token = null;
         if(resultVo.getCode()== SystemCon.OK){
             //需要告知Shiro
             //1、创建登录令牌
-              token =new UsernamePasswordToken(name,password);
+              token =new UsernamePasswordToken(uname,upassword);
             System.out.println(token.getUsername());
             //token.setRememberMe();
             //2、获取主题
@@ -36,10 +39,10 @@ public class UserController {
            /* //4、发起认证 ---会调用Shiro对应的Realm的认证方法
             subject.login(token);*/
         }
-        return ResultUtil.exec(true,"OK",token.getUsername());
+        return resultVo;
     }
 
-    @PostMapping("ruseregist")
+    @RequestMapping("ruseregist")
     public ResultVo regist(User user) {
         return userService.regist(user);
     }

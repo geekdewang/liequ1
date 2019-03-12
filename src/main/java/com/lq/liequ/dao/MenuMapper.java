@@ -2,6 +2,8 @@ package com.lq.liequ.dao;
 
 import com.lq.liequ.pojo.Menu;
 
+import java.util.List;
+
 public interface MenuMapper {
     int deleteByPrimaryKey(Integer mid);
 
@@ -15,5 +17,5 @@ public interface MenuMapper {
 
     int updateByPrimaryKey(Menu record);
 
-
+    List<Menu> findAll();
 }

@@ -30,20 +30,24 @@ public class UserServiceImol implements UserService {
     @Override
     public ResultVo login(String name, String password) {
 
+        ResultVo res= new ResultVo();
         if (name == null || password == null) {
             throw new RuntimeException("密码或账号不能为空！");
         }
 
         try {
             User user = userDao.findByName(name);
+
             if (!user.getUpassword().equals(password)) {
                 throw new RuntimeException("密码错误");
             }
+            res = ResultUtil.exec(true,"成功",user.getUname());
         } catch (Exception e) {
             e.printStackTrace();
+            res = ResultUtil.exec(false,"error",e.getMessage());
         }
 
-        return ResultUtil.exec(true,"成功",userDao.findByName(name));
+        return res;
     }
 
     /**
@@ -53,11 +57,15 @@ public class UserServiceImol implements UserService {
      */
     @Override
     public ResultVo regist(User user) {
+        ResultVo res= new ResultVo();
+
         try {
             userDao.insertSelective(user);
+            res = ResultUtil.exec(true,"OK",null);
         } catch (Exception e) {
             e.printStackTrace();
+            res = ResultUtil.exec(true,"注册失败",null);
         }
-        return ResultUtil.exec(true,"OK",null);
+        return res;
     }
 }
