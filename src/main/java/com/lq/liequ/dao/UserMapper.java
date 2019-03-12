@@ -16,7 +16,8 @@ public interface UserMapper {
 
     int updateByPrimaryKeySelective(User record);
 
-    int updateByPrimaryKey(User record);
+    //修改密码
+    int updateByName(User record);
 
     // 登录
     User findByName(String uname);

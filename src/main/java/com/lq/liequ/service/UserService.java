@@ -11,4 +11,6 @@ public interface UserService {
     ResultVo login(String name, String password);
 
     ResultVo regist(User user);
+
+    ResultVo update(User user);
 }

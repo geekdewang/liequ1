@@ -68,4 +68,22 @@ public class UserServiceImol implements UserService {
         }
         return res;
     }
+
+    @Override
+    public ResultVo update(User user) {
+        ResultVo res= new ResultVo();
+
+        try {
+            User user1 = userDao.findByName(user.getUname());
+            if (user1 == null) {
+                throw new RuntimeException("用户名不存在");
+            }
+            userDao.updateByName(user);
+            res = ResultUtil.exec(true,"OK",null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            res = ResultUtil.exec(true,"修改失败",null);
+        }
+        return res;
+    }
 }

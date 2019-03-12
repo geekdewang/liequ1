@@ -47,4 +47,10 @@ public class UserController {
         return userService.regist(user);
     }
 
+    @RequestMapping("userupdate")
+    public ResultVo userupdate(User user) {
+        return userService.update(user);
+    }
+
+
 }
