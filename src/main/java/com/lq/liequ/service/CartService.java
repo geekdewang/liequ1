@@ -8,4 +8,6 @@ public interface CartService {
     // 添加
     ResultVo add(Cart cart);
 
+    ResultVo cartlist();
+
 }

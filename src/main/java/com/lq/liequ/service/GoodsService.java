@@ -14,4 +14,7 @@ public interface GoodsService {
 
     // 根据商品id展示商品详情
     ResultVo queryGoodsId(Integer gid);
+
+    //通过名字模糊查询
+    ResultVo findByName(String gname);
 }

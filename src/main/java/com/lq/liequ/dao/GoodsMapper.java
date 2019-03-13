@@ -23,4 +23,6 @@ public interface GoodsMapper {
 
     //根据mid展示商品列表
     List<Goods> selectByMId(Integer mid);
+
+    List<Goods> findByName(String gname);
 }

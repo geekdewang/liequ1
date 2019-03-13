@@ -79,4 +79,7 @@
       num = #{num,jdbcType=INTEGER}
     where cid = #{cid,jdbcType=INTEGER}
   </update>
+  <select id="findAll" resultMap="BaseResultMap">
+    select * from cart
+  </select>
 </mapper>

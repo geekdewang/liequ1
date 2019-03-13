@@ -2,6 +2,8 @@ package com.lq.liequ.dao;
 
 import com.lq.liequ.pojo.UserData;
 
+import java.util.List;
+
 public interface UserDataMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface UserDataMapper {
     int updateByPrimaryKeySelective(UserData record);
 
     int updateByPrimaryKey(UserData record);
+
+    List<UserData> findAll(String uname);
 }

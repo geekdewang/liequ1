@@ -7,10 +7,10 @@
     <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="present" property="present" jdbcType="VARCHAR" />
-    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, sex, address, present, uid
+    id, name, sex, address, present, uname
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,13 +23,13 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.lq.liequ.pojo.UserData" >
-    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into userdata (name, sex, address, 
-      present, uid)
+      present, uname)
     values (#{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{present,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER})
+      #{present,jdbcType=VARCHAR}, #{uname})
   </insert>
   <insert id="insertSelective" parameterType="com.lq.liequ.pojo.UserData" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -49,8 +49,8 @@
       <if test="present != null" >
         present,
       </if>
-      <if test="uid != null" >
-        uid,
+      <if test="uname != null" >
+        uname,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -66,8 +66,8 @@
       <if test="present != null" >
         #{present,jdbcType=VARCHAR},
       </if>
-      <if test="uid != null" >
-        #{uid,jdbcType=INTEGER},
+      <if test="uname != null" >
+        #{uname},
       </if>
     </trim>
   </insert>
@@ -86,8 +86,8 @@
       <if test="present != null" >
         present = #{present,jdbcType=VARCHAR},
       </if>
-      <if test="uid != null" >
-        uid = #{uid,jdbcType=INTEGER},
+      <if test="uname != null" >
+        uname = #{uname},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -98,7 +98,12 @@
       sex = #{sex,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       present = #{present,jdbcType=VARCHAR},
-      uid = #{uid,jdbcType=INTEGER}
+      uname = #{uname}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select * from userdata
+  </select>
+
 </mapper>

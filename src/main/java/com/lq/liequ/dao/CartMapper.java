@@ -2,6 +2,8 @@ package com.lq.liequ.dao;
 
 import com.lq.liequ.pojo.Cart;
 
+import java.util.List;
+
 public interface CartMapper {
     int deleteByPrimaryKey(Integer cid);
 
@@ -15,4 +17,6 @@ public interface CartMapper {
     int updateByPrimaryKeySelective(Cart record);
 
     int updateByPrimaryKey(Cart record);
+
+    List<Cart> findAll();
 }

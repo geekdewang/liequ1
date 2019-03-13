@@ -2,27 +2,27 @@ package com.lq.liequ.service.impl;
 
 import com.lq.liequ.common.utils.ResultUtil;
 import com.lq.liequ.common.vo.ResultVo;
-import com.lq.liequ.dao.CartMapper;
-import com.lq.liequ.pojo.Cart;
-import com.lq.liequ.service.CartService;
+import com.lq.liequ.dao.UserDataMapper;
+import com.lq.liequ.pojo.UserData;
+import com.lq.liequ.service.UserDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CartServiceImpl implements CartService {
+public class UserDataServiceImpl implements UserDataService {
 
     @Autowired
-    private CartMapper cartMapper;
+    private UserDataMapper userDataMapper;
 
     @Override
-    public ResultVo add(Cart cart) {
+    public ResultVo findByUname(String uname) {
 
         ResultVo resultVo = new ResultVo();
         try {
-            cartMapper.insertSelective(cart);
-            resultVo = ResultUtil.exec( true, "OK", null);
+            List<UserData> list = userDataMapper.findAll(uname);
+            resultVo = ResultUtil.exec( true, "OK", list);
         } catch (Exception e) {
             e.printStackTrace();
             resultVo = ResultUtil.exec( false, "error", e.getMessage());
@@ -32,11 +32,12 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public ResultVo cartlist() {
+    public ResultVo updateData(UserData userData) {
+
         ResultVo resultVo = new ResultVo();
         try {
-           List<Cart> list = cartMapper.findAll();
-            resultVo = ResultUtil.exec( true, "OK", list);
+            userDataMapper.updateByPrimaryKeySelective(userData);
+            resultVo = ResultUtil.exec( true, "OK", null);
         } catch (Exception e) {
             e.printStackTrace();
             resultVo = ResultUtil.exec( false, "error", e.getMessage());
